@@ -1,9 +1,10 @@
+using System;
 using System.Threading.Tasks;
 using HotChocolate.Execution;
 
 namespace HotChocolate.Caching;
 
-internal sealed class QueryResultCacheMiddleware
+public sealed class QueryResultCacheMiddleware
 {
     private readonly RequestDelegate _next;
     private readonly IQueryResultCache _cache;
@@ -39,6 +40,9 @@ internal sealed class QueryResultCacheMiddleware
 
     private static QueryResultCacheSettings GetSettingsFromContext(IRequestContext context)
     {
-        return new QueryResultCacheSettings();
+        return new QueryResultCacheSettings
+        {
+            MaxAge = TimeSpan.FromSeconds(2000)
+        };
     }
 }
