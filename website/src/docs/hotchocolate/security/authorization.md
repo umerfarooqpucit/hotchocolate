@@ -141,7 +141,7 @@ public class User
 ```csharp
 public class UserType : ObjectType<User>
 {
-    protected override Configure(IObjectTypeDescriptor<User> descriptor)
+    protected override void Configure(IObjectTypeDescriptor<User> descriptor)
     {
         descriptor.Authorize(new[] { "Guest", "Administrator" });
 
